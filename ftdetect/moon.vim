@@ -1,7 +1,7 @@
-" Language:    CoffeeScript
-" Maintainer:  Mick Koch <kchmck@gmail.com>
-" URL:         http://github.com/kchmck/vim-coffee-script
+" Language:    MoonScript
+" Maintainer:  leafo <leafot@gmail.com>
+" Based On:    CoffeeScript by Mick Koch <kchmck@gmail.com>
+" URL:         http://github.com/leafo/moonscript-vim
 " License:     WTFPL
 
-autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
+autocmd BufNewFile,BufRead *.moon set filetype=moon

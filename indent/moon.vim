@@ -1,6 +1,7 @@
-" Language:    CoffeeScript
-" Maintainer:  Mick Koch <kchmck@gmail.com>
-" URL:         http://github.com/kchmck/vim-coffee-script
+" Language:    MoonScript
+" Maintainer:  leafo <leafot@gmail.com>
+" Based On:    CoffeeScript by Mick Koch <kchmck@gmail.com>
+" URL:         http://github.com/leafo/moonscript-vim
 " License:     WTFPL
 
 if exists("b:did_indent")
@@ -10,19 +11,18 @@ endif
 let b:did_indent = 1
 
 setlocal autoindent
-setlocal indentexpr=GetCoffeeIndent(v:lnum)
-" Make sure GetCoffeeIndent is run when these are typed so they can be
+setlocal indentexpr=GetMoonIndent(v:lnum)
+" Make sure GetMoonIndent is run when these are typed so they can be
 " indented or outdented.
-setlocal indentkeys+=0],0),0.,=else,=when,=catch,=finally
+setlocal indentkeys+=0],0),0.,=else,=elseif
 
 " Only define the function once.
-if exists("*GetCoffeeIndent")
+if exists("*GetMoonIndent")
   finish
 endif
 
 " Keywords to indent after
-let s:INDENT_AFTER_KEYWORD = '^\%(if\|unless\|else\|for\|while\|until\|'
-\                          . 'loop\|switch\|when\|try\|catch\|finally\|'
+let s:INDENT_AFTER_KEYWORD = '^\%(if\|else\|for\|while\|with\|elseif\|'
 \                          . 'class\)\>'
 
 " Operators to indent after
@@ -41,27 +41,27 @@ let s:CONTINUATION_BLOCK = '[([{:=]$'
 let s:DOT_ACCESS = '^\.'
 
 " Keywords to outdent after
-let s:OUTDENT_AFTER = '^\%(return\|break\|continue\|throw\)\>'
+let s:OUTDENT_AFTER = '^\%(return\|break\)\>'
 
 " A compound assignment like `... = if ...`
-let s:COMPOUND_ASSIGNMENT = '[:=]\s*\%(if\|unless\|for\|while\|until\|'
-\                         . 'switch\|try\|class\)\>'
+let s:COMPOUND_ASSIGNMENT = '[:=]\s*\%(if\|for\|while\|'
+\                         . 'with\|class\)\>'
 
 " A postfix condition like `return ... if ...`.
-let s:POSTFIX_CONDITION = '\S\s\+\zs\<\%(if\|unless\)\>'
+let s:POSTFIX_CONDITION = '\S\s\+\zs\<\%(if\)\>'
 
 " A single-line else statement like `else ...` but not `else if ...
-let s:SINGLE_LINE_ELSE = '^else\s\+\%(\<\%(if\|unless\)\>\)\@!'
+let s:SINGLE_LINE_ELSE = '^else\s\+\%(\<\%(if\)\>\)\@!'
 
 " Max lines to look back for a match
 let s:MAX_LOOKBACK = 50
 
 " Syntax names for strings
-let s:SYNTAX_STRING = 'coffee\%(String\|AssignString\|Embed\|Regex\|Heregex\|'
+let s:SYNTAX_STRING = 'moon\%(String\|AssignString\|Embed\|Regex\|Heregex\|'
 \                   . 'Heredoc\)'
 
 " Syntax names for comments
-let s:SYNTAX_COMMENT = 'coffee\%(Comment\|BlockComment\|HeregexComment\)'
+let s:SYNTAX_COMMENT = 'moon\%(Comment\|BlockComment\|HeregexComment\)'
 
 " Syntax names for strings and comments
 let s:SYNTAX_STRING_COMMENT = s:SYNTAX_STRING . '\|' . s:SYNTAX_COMMENT
@@ -173,10 +173,10 @@ function! s:GetMatch(curline)
     return s:SearchPair('\[', '\]')
   elseif a:curline =~ '^else\>'
     return s:SearchPair('\<\%(if\|unless\|when\)\>', '\<else\>')
-  elseif a:curline =~ '^catch\>'
-    return s:SearchPair('\<try\>', '\<catch\>')
-  elseif a:curline =~ '^finally\>'
-    return s:SearchPair('\<try\>', '\<finally\>')
+"  elseif a:curline =~ '^catch\>'
+"    return s:SearchPair('\<try\>', '\<catch\>')
+"  elseif a:curline =~ '^finally\>'
+"    return s:SearchPair('\<try\>', '\<finally\>')
   endif
 
   return 0
@@ -232,7 +232,7 @@ function! s:GetTrimmedLine(linenum)
   \                                  '\s\+$', '', '')
 endfunction
 
-function! s:GetCoffeeIndent(curlinenum)
+function! s:GetMoonIndent(curlinenum)
   let prevlinenum = s:GetPrevNormalLine(a:curlinenum)
 
   " Don't do anything if there's no previous line.
@@ -249,20 +249,20 @@ function! s:GetCoffeeIndent(curlinenum)
     return indent(matchlinenum)
   endif
 
-  " Try to find a matching `when`.
-  if curline =~ '^when\>' && !s:SmartSearch(prevlinenum, '\<switch\>')
-    let linenum = a:curlinenum
-
-    while linenum > 0
-      let linenum = s:GetPrevNormalLine(linenum)
-
-      if getline(linenum) =~ '^\s*when\>'
-        return indent(linenum)
-      endif
-    endwhile
-
-    return -1
-  endif
+"  " Try to find a matching `when`.
+"  if curline =~ '^when\>' && !s:SmartSearch(prevlinenum, '\<switch\>')
+"    let linenum = a:curlinenum
+"
+"    while linenum > 0
+"      let linenum = s:GetPrevNormalLine(linenum)
+"
+"      if getline(linenum) =~ '^\s*when\>'
+"        return indent(linenum)
+"      endif
+"    endwhile
+"
+"    return -1
+"  endif
 
   let prevline = s:GetTrimmedLine(prevlinenum)
   let previndent = indent(prevlinenum)
@@ -312,10 +312,10 @@ function! s:GetCoffeeIndent(curlinenum)
   return -1
 endfunction
 
-" Wrap s:GetCoffeeIndent to keep the cursor position.
-function! GetCoffeeIndent(curlinenum)
+" Wrap s:GetMoonIndent to keep the cursor position.
+function! GetMoonIndent(curlinenum)
   let oldcursor = getpos('.')
-  let indent = s:GetCoffeeIndent(a:curlinenum)
+  let indent = s:GetMoonIndent(a:curlinenum)
   call setpos('.', oldcursor)
 
   return indent
