@@ -6,7 +6,7 @@ Adds syntax highlighting and indent support for MoonScript in vim.
 
 ### Using [Vundle](https://github.com/gmarik/vundle)
 
-1. Add the following to your `.vimrc` where other bundle's are located:
+1. Add the following to your `.vimrc` where other bundles are located:
        
 		Bundle 'leafo/moonscript-vim'
 
