@@ -26,9 +26,9 @@ Adds syntax highlighting and indent support for MoonScript in vim.
 1. Check out the repository and copy the following to `.vim/` directory or any
    other run time path, keeping their directory structure intact:
 
-       syntax/moon.vim
-       indent/moon.vim
-       ftdetect/moon.vim
+		syntax/moon.vim
+		indent/moon.vim
+		ftdetect/moon.vim
 
 ## Thanks
 
