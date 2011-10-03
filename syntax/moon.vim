@@ -33,7 +33,7 @@ hi def link moonConditional Conditional
 " syn match moonException /\<\%(try\|catch\|finally\)\>/ display
 " hi def link moonException Exception
 
-syn match moonKeyword /\<\%(export\|import\|from\|with\|in\|and\|or\|not\|class\|extends\|super\|do\)\>/
+syn match moonKeyword /\<\%(export\|import\|when\|from\|with\|in\|and\|or\|not\|class\|extends\|super\|using\|do\)\>/
 \                       display
 hi def link moonKeyword Keyword
 
@@ -147,7 +147,7 @@ syn match moonLuaFunc /debug\.setmetatable/
 hi def link moonLuaFunc Identifier
 
 " The first case matches symbol operators only if they have an operand before.
-syn match moonExtendedOp /\%(\S\s*\)\@<=[+\-*/%&|\^=!<>?]\+\|\.\|\\\|!/
+syn match moonExtendedOp /\%(\S\s*\)\@<=[+\-*/%&|\^=!<>?#]\+\|\.\|\\\|!/
 \                          display
 hi def link moonExtendedOp moonOperator
 hi def link moonOperator Operator
