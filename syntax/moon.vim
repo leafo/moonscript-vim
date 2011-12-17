@@ -314,7 +314,7 @@ syn cluster moonAll contains=moonStatement,moonRepeat,moonConditional,
 \                              moonConstant,moonString,moonNumber,
 \                              moonFloat,moonReservedError,moonObjAssign,
 \                              moonObjStringAssign,moonObjNumberAssign,
-\                              moonComment,moonLuaFunc,
+\                              moonShortHandAssign,moonComment,moonLuaFunc,
 \                              moonSpaceError,moonSemicolonError,
 \                              moonDotAccess,moonProtoAccess,
 \                              moonCurlies,moonBrackets,moonParens
