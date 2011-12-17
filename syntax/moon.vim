@@ -234,6 +234,11 @@ syn match moonObjAssign /@\?\I\i*\s*:\@<!::\@!/
 \                         contains=@moonIdentifier,moonAssignOp
 hi def link moonObjAssign Identifier
 
+" Short hand table literal assign
+syn match moonShortHandAssign /:\@<!:@\?\I\i*\s*/
+\                         contains=@moonIdentifier,moonAssignOp
+hi def link moonShortHandAssign Identifier
+
 " An object-string assignment
 syn match moonObjStringAssign /\("\|'\)[^\1]*\1\s*;\@<!::\@!'\@!/
 \                               contains=moonAssignString,moonAssignOp
