@@ -26,14 +26,14 @@ hi def link moonStatement Statement
 syn match moonRepeat /\<\%(for\|while\)\>/ display
 hi def link moonRepeat Repeat
 
-syn match moonConditional /\<\%(if\|else\|elseif\|then\)\>/
+syn match moonConditional /\<\%(if\|else\|elseif\|then\|switch\|when\|)\>/
 \                           display
 hi def link moonConditional Conditional
 
 " syn match moonException /\<\%(try\|catch\|finally\)\>/ display
 " hi def link moonException Exception
 
-syn match moonKeyword /\<\%(export\|import\|when\|from\|with\|in\|and\|or\|not\|class\|extends\|super\|using\|do\)\>/
+syn match moonKeyword /\<\%(export\|import\|from\|with\|in\|and\|or\|not\|class\|extends\|super\|using\|do\)\>/
 \                       display
 hi def link moonKeyword Keyword
 
