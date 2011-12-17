@@ -31,7 +31,7 @@ let s:INDENT_AFTER_OPERATOR = '\%([([{:=]\|[-=]>\)$'
 " Keywords and operators that continue a line
 let s:CONTINUATION = '\<\%(is\|isnt\|and\|or\)\>$'
 \                  . '\|'
-\                  . '\%(-\@<!-\|+\@<!+\|<\|[-=]\@<!>\|\*\|/\@<!/\|%\||\|'
+\                  . '\%(-\@<!-\|+\@<!+\|<\|[-=]\@<!>\|\%(export \)\@<!\*\|/\@<!/\|%\||\|'
 \                  . '&\|,\|\.\@<!\.\)$'
 
 " Operators that block continuation indenting
