@@ -26,7 +26,7 @@ hi def link moonStatement Statement
 syn match moonRepeat /\<\%(for\|while\)\>/ display
 hi def link moonRepeat Repeat
 
-syn match moonConditional /\<\%(if\|else\|elseif\|then\|switch\|when\|)\>/
+syn match moonConditional /\<\%(if\|else\|elseif\|then\|switch\|when\)\>/
 \                           display
 hi def link moonConditional Conditional
 
