@@ -26,14 +26,14 @@ hi def link moonStatement Statement
 syn match moonRepeat /\<\%(for\|while\)\>/ display
 hi def link moonRepeat Repeat
 
-syn match moonConditional /\<\%(if\|else\|elseif\|then\)\>/
+syn match moonConditional /\<\%(if\|else\|elseif\|then\|switch\|when\|)\>/
 \                           display
 hi def link moonConditional Conditional
 
 " syn match moonException /\<\%(try\|catch\|finally\)\>/ display
 " hi def link moonException Exception
 
-syn match moonKeyword /\<\%(export\|import\|when\|from\|with\|in\|and\|or\|not\|class\|extends\|super\|using\|do\)\>/
+syn match moonKeyword /\<\%(export\|import\|from\|with\|in\|and\|or\|not\|class\|extends\|super\|using\|do\)\>/
 \                       display
 hi def link moonKeyword Keyword
 
@@ -234,6 +234,11 @@ syn match moonObjAssign /@\?\I\i*\s*:\@<!::\@!/
 \                         contains=@moonIdentifier,moonAssignOp
 hi def link moonObjAssign Identifier
 
+" Short hand table literal assign
+syn match moonShortHandAssign /:\@<!:@\?\I\i*\s*/
+\                         contains=@moonIdentifier,moonAssignOp
+hi def link moonShortHandAssign Identifier
+
 " An object-string assignment
 syn match moonObjStringAssign /\("\|'\)[^\1]*\1\s*;\@<!::\@!'\@!/
 \                               contains=moonAssignString,moonAssignOp
@@ -309,7 +314,7 @@ syn cluster moonAll contains=moonStatement,moonRepeat,moonConditional,
 \                              moonConstant,moonString,moonNumber,
 \                              moonFloat,moonReservedError,moonObjAssign,
 \                              moonObjStringAssign,moonObjNumberAssign,
-\                              moonComment,moonLuaFunc,
+\                              moonShortHandAssign,moonComment,moonLuaFunc,
 \                              moonSpaceError,moonSemicolonError,
 \                              moonDotAccess,moonProtoAccess,
 \                              moonCurlies,moonBrackets,moonParens
