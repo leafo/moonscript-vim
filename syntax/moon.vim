@@ -256,9 +256,9 @@ hi def link moonComment Comment
 " \                             contains=@Spell,moonTodo
 " hi def link moonBlockComment moonComment
 
-" syn region moonInterp matchgroup=moonInterpDelim start=/#{/ end=/}/ contained
-" \                       contains=@moonAll
-" hi def link moonInterpDelim PreProc
+syn region moonInterp matchgroup=moonInterpDelim start=/#{/ end=/}/ contained
+\                       contains=@moonAll
+hi def link moonInterpDelim PreProc
 
 " A string escape sequence
 syn match moonEscape /\\\d\d\d\|\\x\x\{2\}\|\\u\x\{4\}\|\\./ contained display
@@ -291,14 +291,14 @@ hi def link moonDotAccess moonExtendedOp
 syn match moonProtoAccess /::\s*\I\i*/he=s+2 contains=@moonIdentifier
 hi def link moonProtoAccess moonExtendedOp
 
-" " This is required for interpolations to work.
-" syn region moonCurlies matchgroup=moonCurly start=/{/ end=/}/
-" \                        contains=@moonAll
-" syn region moonBrackets matchgroup=moonBracket start=/\[/ end=/\]/
-" \                         contains=@moonAll
-" syn region moonParens matchgroup=moonParen start=/(/ end=/)/
-" \                       contains=@moonAll
-" 
+" This is required for interpolations to work.
+syn region moonCurlies matchgroup=moonCurly start=/{/ end=/}/
+\                        contains=@moonAll
+syn region moonBrackets matchgroup=moonBracket start=/\[/ end=/\]/
+\                         contains=@moonAll
+syn region moonParens matchgroup=moonParen start=/(/ end=/)/
+\                       contains=@moonAll
+
 " " These are highlighted the same as commas since they tend to go together.
 " hi def link moonBlock moonSpecialOp
 " hi def link moonBracket moonBlock
