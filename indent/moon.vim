@@ -22,7 +22,7 @@ if exists("*GetMoonIndent")
 endif
 
 " Keywords to indent after
-let s:INDENT_AFTER_KEYWORD = '^\%(if\|else\|for\|while\|with\|elseif\|'
+let s:INDENT_AFTER_KEYWORD = '^\%(if\|unless\|else\|for\|while\|with\|elseif\|'
 \                          . 'class\|switch\|when\)\>'
 
 " Operators to indent after
@@ -44,11 +44,11 @@ let s:DOT_ACCESS = '^\.'
 let s:OUTDENT_AFTER = '^\%(return\|break\)\>'
 
 " A compound assignment like `... = if ...`
-let s:COMPOUND_ASSIGNMENT = '[:=]\s*\%(if\|for\|while\|'
+let s:COMPOUND_ASSIGNMENT = '[:=]\s*\%(if\|unless\|for\|while\|'
 \                         . 'with\|class\)\>'
 
 " A postfix condition like `return ... if ...`.
-let s:POSTFIX_CONDITION = '\S\s\+\zs\<\%(if\)\>'
+let s:POSTFIX_CONDITION = '\S\s\+\zs\<\%(if\|unless\)\>'
 
 " A single-line else statement like `else ...` but not `else if ...
 let s:SINGLE_LINE_ELSE = '^else\s\+\%(\<\%(if\)\>\)\@!'
