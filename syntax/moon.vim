@@ -33,7 +33,7 @@ hi def link moonConditional Conditional
 " syn match moonException /\<\%(try\|catch\|finally\)\>/ display
 " hi def link moonException Exception
 
-syn match moonKeyword /\<\%(export\|import\|from\|with\|in\|and\|or\|not\|class\|extends\|super\|using\|do\)\>/
+syn match moonKeyword /\<\%(export\|local\|import\|from\|with\|in\|and\|or\|not\|class\|extends\|super\|using\|do\)\>/
 \                       display
 hi def link moonKeyword Keyword
 
@@ -213,7 +213,7 @@ hi def link moonFloat Float
 
 " An error for reserved keywords
 if !exists("moon_no_reserved_words_error")
-  syn match moonReservedError /\<\%(end\|function\|local\|repeat\)\>/
+  syn match moonReservedError /\<\%(end\|function\|repeat\)\>/
   \                             display
   hi def link moonReservedError Error
 endif
