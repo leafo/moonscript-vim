@@ -20,7 +20,7 @@ syn sync minlines=100
 " priority for keywords is higher than matches. This causes keywords to be
 " highlighted inside matches, even if a match says it shouldn't contain them --
 " like with moonAssign and moonDot.
-syn match moonStatement /\<\%(return\|break\)\>/ display
+syn match moonStatement /\<\%(return\|break\|continue\)\>/ display
 hi def link moonStatement Statement
 
 syn match moonRepeat /\<\%(for\|while\)\>/ display
