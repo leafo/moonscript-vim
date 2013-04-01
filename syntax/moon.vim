@@ -287,17 +287,9 @@ endif
 syn match moonDotAccess /\.\@<!\.\s*\I\i*/he=s+1 contains=@moonIdentifier
 hi def link moonDotAccess moonExtendedOp
 
-" Ignore reserved words in prototype accesses.
-syn match moonProtoAccess /::\s*\I\i*/he=s+2 contains=@moonIdentifier
-hi def link moonProtoAccess moonExtendedOp
-
 " This is required for interpolations to work.
 syn region moonCurlies matchgroup=moonCurly start=/{/ end=/}/
-\                        contains=@moonAll
-syn region moonBrackets matchgroup=moonBracket start=/\[/ end=/\]/
-\                         contains=@moonAll
-syn region moonParens matchgroup=moonParen start=/(/ end=/)/
-\                       contains=@moonAll
+\                        contains=@moonAll contained
 
 " " These are highlighted the same as commas since they tend to go together.
 " hi def link moonBlock moonSpecialOp
@@ -316,8 +308,8 @@ syn cluster moonAll contains=moonStatement,moonRepeat,moonConditional,
 \                              moonObjStringAssign,moonObjNumberAssign,
 \                              moonShortHandAssign,moonComment,moonLuaFunc,
 \                              moonSpaceError,moonSemicolonError,
-\                              moonDotAccess,moonProtoAccess,
-\                              moonCurlies,moonBrackets,moonParens
+\                              moonDotAccess,
+\                              moonCurlies
 
 if !exists('b:current_syntax')
   let b:current_syntax = 'moon'
