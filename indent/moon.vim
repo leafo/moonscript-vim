@@ -219,7 +219,8 @@ endfunction
 
 " Get a line without comments or surrounding whitespace.
 function! s:GetTrimmedLine(linenum)
-  let comment = s:FindComment(a:linenum)
+  let comment = 0
+  " let comment = s:FindComment(a:linenum)
   let line = getline(a:linenum)
 
   if comment
