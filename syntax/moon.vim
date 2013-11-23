@@ -147,12 +147,12 @@ syn match moonLuaFunc /debug\.setmetatable/
 hi def link moonLuaFunc Identifier
 
 " The first case matches symbol operators only if they have an operand before.
-syn match moonExtendedOp /\%(\S\s*\)\@<=[+\-*/%&|\^=!<>?#]\+\|\.\|\\\|!/
+syn match moonExtendedOp /\%(\S\s*\)\@<=[+\-*/%&|\^=!<>?#]\+\|\.\|\\/
 \                          display
 hi def link moonExtendedOp moonOperator
 hi def link moonOperator Operator
 
-syntax match moonFunction /->\|=>\|)\|(\|\[\|]\|{\|}/
+syntax match moonFunction /->\|=>\|)\|(\|\[\|]\|{\|}\|!/
 highlight default link moonFunction Function
 
 " This is separate from `moonExtendedOp` to help differentiate commas from
