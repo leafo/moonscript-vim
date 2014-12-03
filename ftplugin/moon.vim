@@ -53,7 +53,11 @@ let g:tagbar_type_moon = {
       \   'ctagsargs' : s:raw_args,
       \   'kinds' : [
       \     'f:functions',
+      \     'c:classes',
       \     'o:object',
+      \     'v:variables',
+      \     'p:prototypes',
+      \     'b:blocks'
       \   ],
       \   'sro' : ".",
       \   'kind2scope' : {
@@ -61,6 +65,10 @@ let g:tagbar_type_moon = {
       \     'o' : 'object',
       \   }
       \ }
+
+
+
+
 
 
 function! CoffeeAutoTag()
