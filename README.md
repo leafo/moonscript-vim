@@ -7,7 +7,7 @@ Adds syntax highlighting and indent support for MoonScript in vim.
 ### Using [Vundle](https://github.com/gmarik/vundle)
 
 1. Add the following to your `.vimrc` where other bundles are located:
-       
+
 		Bundle 'leafo/moonscript-vim'
 
 2. Run from command line:
@@ -29,6 +29,12 @@ Adds syntax highlighting and indent support for MoonScript in vim.
 		syntax/moon.vim
 		indent/moon.vim
 		ftdetect/moon.vim
+
+## Support CoffeeTags on Tagbar
+
+CoffeeTags works perfectly on MoonScript.
+The CoffeeTags vim plugin has been mreged into this moonscript-vim.
+You can install and enable CoffeeTags in Vim according to [this readme](https://github.com/lukaszkorecki/coffeetags)
 
 ## Thanks
 
