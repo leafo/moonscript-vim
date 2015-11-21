@@ -8,11 +8,11 @@ Adds syntax highlighting and indent support for MoonScript in vim.
 
 1. Add the following to your `.vimrc` where other bundles are located:
        
-		Bundle 'leafo/moonscript-vim'
+		Plugin 'leafo/moonscript-vim'
 
 2. Run from command line:
 
-		$ vim +BundleInstall
+		$ vim +PluginInstall +qall
 
 ### Using [pathogen](https://github.com/tpope/vim-pathogen)
 
