@@ -249,6 +249,7 @@ syn match moonObjNumberAssign /\d\+\%(\.\d\+\)\?\s*:\@<!::\@!/
 syn keyword moonTodo TODO FIXME XXX contained
 hi def link moonTodo Todo
 
+syn match moonComment "\%^#!.*"
 syn match moonComment /--.*/ contains=@Spell,moonTodo
 hi def link moonComment Comment
 
