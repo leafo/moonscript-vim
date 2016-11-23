@@ -41,7 +41,7 @@ let s:CONTINUATION_BLOCK = '[([{:=]$'
 let s:DOT_ACCESS = '^\.'
 
 " Keywords to outdent after
-let s:OUTDENT_AFTER = '^\%(return\|break\)\>'
+let s:OUTDENT_AFTER = '^\%(return\|break\|continue\|error\)\>'
 
 " A compound assignment like `... = if ...`
 let s:COMPOUND_ASSIGNMENT = '[:=]\s*\%(if\|unless\|for\|while\|'
