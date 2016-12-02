@@ -92,6 +92,15 @@ function! s:IsCommentLine(linenum)
   return s:IsComment(a:linenum, indent(a:linenum) + 1)
 endfunction
 
+" Set shiftwidth function.
+if exists('*shiftwidth')
+  let s:Shiftwidth = function('shiftwidth')
+else
+  function! s:Shiftwidth()
+    return &shiftwidth
+  endfunction
+endif
+
 " Repeatedly search a line for a regex until one is found outside a string or
 " comment.
 function! s:SmartSearch(linenum, regex)
@@ -270,7 +279,7 @@ function! s:GetMoonIndent(curlinenum)
 
   " Always indent after these operators.
   if prevline =~ s:INDENT_AFTER_OPERATOR
-    return previndent + &shiftwidth
+    return previndent + s:Shiftwidth()
   endif
 
   " Indent after a continuation if it's the first.
@@ -279,7 +288,7 @@ function! s:GetMoonIndent(curlinenum)
     let prevprevline = s:GetTrimmedLine(prevprevlinenum)
 
     if prevprevline !~ s:CONTINUATION && prevprevline !~ s:CONTINUATION_BLOCK
-      return previndent + &shiftwidth
+      return previndent + s:Shiftwidth()
     endif
 
     return -1
@@ -289,7 +298,7 @@ function! s:GetMoonIndent(curlinenum)
   " single-line statement.
   if prevline =~ s:INDENT_AFTER_KEYWORD || prevline =~ s:COMPOUND_ASSIGNMENT
     if !s:SmartSearch(prevlinenum, '\<then\>') && prevline !~ s:SINGLE_LINE_ELSE
-      return previndent + &shiftwidth
+      return previndent + s:Shiftwidth()
     endif
 
     return -1
@@ -297,7 +306,7 @@ function! s:GetMoonIndent(curlinenum)
 
   " Indent a dot access if it's the first.
   if curline =~ s:DOT_ACCESS && prevline !~ s:DOT_ACCESS
-    return previndent + &shiftwidth
+    return previndent + s:Shiftwidth()
   endif
 
   " Outdent after these keywords if they don't have a postfix condition or are
@@ -305,7 +314,7 @@ function! s:GetMoonIndent(curlinenum)
   if prevline =~ s:OUTDENT_AFTER
     if !s:SmartSearch(prevlinenum, s:POSTFIX_CONDITION) ||
     \   s:SmartSearch(prevlinenum, '\<then\>')
-      return previndent - &shiftwidth
+      return previndent - s:Shiftwidth()
     endif
   endif
 
