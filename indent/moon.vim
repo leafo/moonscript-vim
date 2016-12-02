@@ -92,14 +92,14 @@ function! s:IsCommentLine(linenum)
   return s:IsComment(a:linenum, indent(a:linenum) + 1)
 endfunction
 
-" Get shiftwidth
-function! s:Shiftwidth()
-  if v:version >= 704 || (v:version == 703 && has('patch694'))
-    return shiftwidth()
-  else
+" Set shiftwidth function.
+if exists('*shiftwidth')
+  let s:Shiftwidth = function('shiftwidth')
+else
+  function! s:Shiftwidth()
     return &shiftwidth
-  endif
-endfunction
+  endfunction
+endif
 
 " Repeatedly search a line for a regex until one is found outside a string or
 " comment.
